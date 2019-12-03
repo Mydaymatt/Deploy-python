@@ -8,7 +8,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'python test.py'
+        sh 'python mysite/__init__.py'
       }
       post {
         always {
