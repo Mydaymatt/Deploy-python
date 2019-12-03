@@ -1,9 +1,9 @@
 pipeline {
-  agent { docker { image 'python:3.7.2' } }
+  agent { node { lable '10.0.42.42' } }
   stages {
     stage('build') {
       steps {
-        sh 'pip install -r requirements.txt'
+        sh 'docker  build --rm -t sandbox-client:1.0 -f Dockerfile'
       }
     }
     stage('test') {
