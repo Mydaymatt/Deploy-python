@@ -45,6 +45,10 @@ git clone git://github.com/django/django ~/my_cloned_project
 cd ~/my_cloned_project
 python3.6 -m venv my_project
 source my_project/bin/activate
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
 EOH
   }
   metadata_startup_script = "echo hi > /test.txt"
