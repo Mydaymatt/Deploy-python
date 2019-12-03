@@ -32,5 +32,20 @@ resource "google_compute_address" "internal_with_subnet_and_address" {
   address      = "10.0.42.42"
   region       = "us-central1"
 }
+
+provisioner "local-exec" {
+    command = <<EOH
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt install -y python3-pip
+sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+sudo apt install -y python3-venv
+sudo apt install python3-django
+git clone git://github.com/django/django ~/my_cloned_project
+cd ~/my_cloned_project
+python3.6 -m venv my_project
+source my_project/bin/activate
+EOH
+  }
   metadata_startup_script = "echo hi > /test.txt"
 }
